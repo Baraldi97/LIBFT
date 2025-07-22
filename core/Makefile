@@ -1,6 +1,7 @@
-all: clean fclean re
+all: clean
 
 clean:
+	rm -rf ./a.out
 	
 
 fclean:
