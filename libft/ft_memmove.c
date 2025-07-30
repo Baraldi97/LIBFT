@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include <libft.h>
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
@@ -18,21 +18,23 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	unsigned const char	*s;
 	size_t				i;
 
-	d = (unsigned char*)dest;
-	s = (unsigned const char*)src;
-
-	if(!dest && !src && n > 0)
-	return (NULL);
-	if(d < s)
+	d = (unsigned char *) dest;
+	s = (unsigned const char *) src;
+	if (!dest && !src && n > 0)
+		return (NULL);
+	if (d < s)
 	{
 		i = 0;
-		while(i < n)
-			d[i] = s[i], i++;
+		while (i < n)
+		{	
+			d[i] = s[i];
+			i++;
+		}
 	}
-	else if(d > s)
+	else if (d > s)
 	{
 		i = n;
-		while(i-- > 0)
+		while (i-- > 0)
 			d[i] = s[i];
 	}
 	return (dest);
