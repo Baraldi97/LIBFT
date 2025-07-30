@@ -37,8 +37,8 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 // 	char	name[8] = "Rodrigo";
 // 	char	new[8] = "";
 
-// 	printf("This is the var name: %s and this is the var new: %s\n", name, new);
+// 	printf("Before function: this is the var 'name': %s and this is the var 'new': %s\n", name, new);
 // 	ft_memcpy(new, name, 8);
-// 	printf("This is the var name: %s and this is the var new: %s\n", name, new);
+// 	printf("After Function: this is the var 'name': %s and this is the var 'new': %s\n", name, new);
 // 	return (0);
 // }

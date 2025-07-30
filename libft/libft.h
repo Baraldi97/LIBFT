@@ -1,3 +1,7 @@
+# include <stdio.h>
+#include <stddef.h>
+# include <unistd.h>
+
 int ft_isalpha(char c);
 int ft_isdigit(int nb);
 int ft_isalnum(char c);
