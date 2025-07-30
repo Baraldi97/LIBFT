@@ -1,6 +1,7 @@
 # include <stdio.h>
-#include <stddef.h>
+# include <stddef.h>
 # include <unistd.h>
+# include <ctype.h>
 
 int ft_isalpha(char c);
 int ft_isdigit(int nb);

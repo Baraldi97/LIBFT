@@ -20,12 +20,12 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 
 	if (!dest && !src)
 		return (NULL);
-	if(n == 0)
+	if (n == 0)
 		return (dest);
 	d = (unsigned char *)dest;
 	s = (const unsigned char *)src;
 	i = 0;
-	while(i < n)
+	while (i < n)
 	{
 		d[i] = s[i];
 		i++;
@@ -37,8 +37,8 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 // 	char	name[8] = "Rodrigo";
 // 	char	new[8] = "";
 
-// 	printf("Before function: this is the var 'name': %s and this is the var 'new': %s\n", name, new);
+// 	printf("name': %s new: %s\n", name, new);
 // 	ft_memcpy(new, name, 8);
-// 	printf("After Function: this is the var 'name': %s and this is the var 'new': %s\n", name, new);
+// 	printf("name': %s new: %s\n", name, new);
 // 	return (0);
 // }
