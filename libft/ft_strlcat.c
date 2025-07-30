@@ -6,7 +6,7 @@
 /*   By: rcosta <rcosta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 15:21:10 by rcosta            #+#    #+#             */
-/*   Updated: 2025/07/30 15:53:48 by rcosta           ###   ########.fr       */
+/*   Updated: 2025/07/30 16:25:49 by rcosta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	dst[dst_len + i] = '\0';
 	return (dst_len + src_len);
 }
-int	main(void)
-{
-	char	name[9] = " Baraldi";
-	char	surname[8] = "Rodrigo";
-	ft_strlcat(surname, name, 17);
-	printf("Concatenated name: %s\n", surname);
-	return(0);
-}
+// int	main(void)
+// {
+// 	char	name[9] = " Baraldi";
+// 	char	surname[8] = "Rodrigo";
+// 	ft_strlcat(surname, name, 17);
+// 	printf("Concatenated name: %s\n", surname);
+// 	return(0);
+// }
