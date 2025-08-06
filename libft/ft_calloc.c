@@ -6,7 +6,7 @@
 /*   By: rcosta <rcosta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 17:03:29 by rcosta            #+#    #+#             */
-/*   Updated: 2025/08/06 19:12:22 by rcosta           ###   ########.fr       */
+/*   Updated: 2025/08/06 19:19:20 by rcosta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,3 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	ft_bzero(ptr, n_size);
 	return (ptr);
 }
-
