@@ -10,4 +10,21 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-char *strnstr(const char *haystack, const char *needle, size_t len);
+char *strnstr(const char *haystack, const char *needle, size_t len)
+{
+    size_t  i;
+    size_t  j;
+
+    if (*needle == '\0')
+        return ((char *)haystack);
+    i = 0;
+    while (i < len && haystack[i] != '\0')
+    {
+        j = 0;
+        if (haystack[i][j] == needle[i][j])
+            return (&haystack)
+        i++;
+        j++;
+    }
+    return (NULL)
+}
