@@ -1,35 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcosta <rcosta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/06 17:03:57 by rcosta            #+#    #+#             */
-/*   Updated: 2025/08/07 16:14:06 by rcosta           ###   ########.fr       */
+/*   Created: 2025/08/07 19:36:12 by rcosta            #+#    #+#             */
+/*   Updated: 2025/08/07 19:57:36 by rcosta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-char	*ft_strdup(const char	*s)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	void	*ptr;
-	size_t	s_size;
-	size_t	i;
-	char	*ns;
+	size_t			size_s1;
+	size_t			size_s2;
+	size_t			i;
+	size_t			j;
+	unsigned char	*conct;
 
-	i = 0;
-	s_size = ft_strlen(s);
-	ptr = ft_malloc(s_size + 1);
-	if (!ptr)
+	size_s1 = ft_strlen(s1);
+	size_s2 = ft_strlen(s2);
+	conct = malloc(size_s1 + size_s2 + 1);
+	if (conct == NULL)
 		return (NULL);
-	ns = (char *)ptr;
-	while (s[i] != '\0')
+	i = 0;
+	while (s1[i] != '\0')
 	{
-		ns[i] = s[i];
+		conct[i] = s1[i];
 		i++;
 	}
-	ns[i] = '\0';
-	return (ns);
+	j = 0;
+	while (s2[j] != '\0')
+	{
+		conct[i + j] = s2[j];
+		j++;
+	}
+	conct[i + j] = '\0';
+	return (conct);
 }

@@ -1,35 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcosta <rcosta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/06 17:03:57 by rcosta            #+#    #+#             */
-/*   Updated: 2025/08/07 16:14:06 by rcosta           ###   ########.fr       */
+/*   Created: 2025/08/07 15:34:44 by rcosta            #+#    #+#             */
+/*   Updated: 2025/08/07 19:49:12 by rcosta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-char	*ft_strdup(const char	*s)
+char	*ft_substr(const char *s, unsigned int start, size_t len)
 {
-	void	*ptr;
-	size_t	s_size;
+	char	*ptr;
 	size_t	i;
-	char	*ns;
 
 	i = 0;
-	s_size = ft_strlen(s);
-	ptr = ft_malloc(s_size + 1);
-	if (!ptr)
+	ptr = malloc(len +1);
+	if (ptr == NULL)
 		return (NULL);
-	ns = (char *)ptr;
-	while (s[i] != '\0')
+	while (i < len)
 	{
-		ns[i] = s[i];
+		ptr[i] = s[i + start];
 		i++;
 	}
-	ns[i] = '\0';
-	return (ns);
+	ptr[i] = '\0';
+	return (ptr);
 }
+// #include <stdio.h>
+
+// int	main(void)
+// {
+// 	char	*name;
+// 	name = ft_substr("Rodrigo", 2, 3);
+// 	printf("%s", name);
+// 	return (0);
+// }
