@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo Interativo: ft_strtrim</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: #fff;
+            padding: 20px 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        h2 {
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+            color: #34495e;
+        }
+        pre {
+            background-color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        code {
+            font-family: "Courier New", Courier, monospace;
+        }
+        .step {
+            margin-bottom: 25px;
+        }
+        .step-title {
+            background-color: #3498db;
+            color: #fff;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            display: inline-block;
+        }
+        .step-content {
+            margin-top: 10px;
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-left: 3px solid #3498db;
+            border-radius: 0 5px 5px 0;
+        }
+        .highlight {
+            background-color: #ffeb3b;
+        }
+        .example {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px dashed #9b59b6;
+            background-color: #fcf6ff;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Função <code>ft_strtrim</code>: Exemplo Passo a Passo</h1>
+    <p>Esta página demonstra, linha a linha, como a função <code>ft_strtrim</code> remove caracteres do início e do fim de uma string.</p>
+    
+    <div class="example">
+        <h2>Exemplo Prático</h2>
+        <p>Vamos usar o seguinte exemplo para visualizar o processo:</p>
+        <ul>
+            <li><strong>String original (<code>s1</code>):</strong> <code>"---Olá, Mundo---"</code></li>
+            <li><strong>Conjunto de caracteres a remover (<code>set</code>):</strong> <code>"-"</code></li>
+            <li><strong>Resultado esperado:</strong> <code>"Olá, Mundo"</code></li>
+        </ul>
+    </div>
+
+    <pre><code>
+char *ft_strtrim(char const *s1, char const *set)
+{
+    size_t  i;
+    size_t  j;
+    char    *new_str;
+    
+    if (!s1 || !set)
+        return (NULL);
+    
+    i = 0;
+    while (s1[i] && ft_strchr(set, s1[i]))
+        i++;
+    
+    j = ft_strlen(s1);
+    while (j > i && ft_strchr(set, s1[j - 1]))
+        j--;
+    
+    new_str = (char *)malloc(sizeof(char) * (j - i + 1));
+    if (!new_str)
+        return (NULL);
+
+    ft_strlcpy(new_str, s1 + i, j - i + 1);
+    return (new_str);
+}
+    </code></pre>
+
+    <hr>
+    
+    <div id="step-by-step">
+        <h2>Análise Passo a Passo</h2>
+
+        <div class="step">
+            <div class="step-title">Passo 1: Verificação de Ponteiros Nulos</div>
+            <div class="step-content">
+                <p><code>if (!s1 || !set)</code></p>
+                <p>A função verifica se a string original <code>s1</code> ou o conjunto de caracteres <code>set</code> são ponteiros nulos. Se forem, a função retorna <code>NULL</code> para evitar um erro de segmentação. No nosso exemplo, ambos são válidos, então a execução continua.</p>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-title">Passo 2: Encontrar o Início da String</div>
+            <div class="step-content">
+                <p><code>i = 0;</code></p>
+                <p>A variável <code>i</code> é inicializada em 0, apontando para o início da string: <code>"---Olá, Mundo---"</code>.</p>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-title">Passo 3: Loop para o Início</div>
+            <div class="step-content">
+                <p><code>while (s1[i] && ft_strchr(set, s1[i]))</code></p>
+                <p>Este loop avança o índice <code>i</code> enquanto os caracteres iniciais estiverem no <code>set</code> (<code>"-"</code>).</p>
+                <ul>
+                    <li>A primeira iteração, <code>s1[0]</code> é <code>'-'</code>, que está no <code>set</code>. <code>i</code> se torna 1.</li>
+                    <li>A segunda, <code>s1[1]</code> é <code>'-'</code>, que está no <code>set</code>. <code>i</code> se torna 2.</li>
+                    <li>A terceira, <code>s1[2]</code> é <code>'-'</code>, que está no <code>set</code>. <code>i</code> se torna 3.</li>
+                    <li>A quarta, <code>s1[3]</code> é <code>'O'</code>, que <strong>não</strong> está no <code>set</code>. O loop para.</li>
+                </ul>
+                <p>Agora, <code>i</code> é igual a 3, marcando o início da nossa nova string.</p>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-title">Passo 4: Encontrar o Fim da String</div>
+            <div class="step-content">
+                <p><code>j = ft_strlen(s1);</code></p>
+                <p>A variável <code>j</code> é inicializada com o tamanho total da string <code>s1</code>, que é 16 (15 caracteres + <code>\0</code>). Portanto, <code>j</code> começa com o valor 16.</p>
+            </div>
+        </div>
+        
+        <div class="step">
+            <div class="step-title">Passo 5: Loop para o Fim</div>
+            <div class="step-content">
+                <p><code>while (j > i && ft_strchr(set, s1[j - 1]))</code></p>
+                <p>Este loop retrocede o índice <code>j</code>, removendo os caracteres do <code>set</code> a partir do final da string. O <code>j - 1</code> é usado para acessar o último caractere, não o <code>\0</code>.</p>
+                <ul>
+                    <li>A primeira iteração, <code>s1[15]</code> é <code>'-'</code>, que está no <code>set</code>. <code>j</code> se torna 15.</li>
+                    <li>A segunda, <code>s1[14]</code> é <code>'-'</code>, que está no <code>set</code>. <code>j</code> se torna 14.</li>
+                    <li>A terceira, <code>s1[13]</code> é <code>'-'</code>, que está no <code>set</code>. <code>j</code> se torna 13.</li>
+                    <li>A quarta, <code>s1[12]</code> é <code>'o'</code>, que <strong>não</strong> está no <code>set</code>. O loop para.</li>
+                </ul>
+                <p>Agora, <code>j</code> é igual a 13, marcando o fim da nossa nova string.</p>
+            </div>
+        </div>
+        
+        <div class="step">
+            <div class="step-title">Passo 6: Alocação e Verificação</div>
+            <div class="step-content">
+                <p><code>new_str = (char *)malloc(sizeof(char) * (j - i + 1));</code></p>
+                <p>A função aloca memória para a nova string. O tamanho é calculado como <code>(13 - 3) + 1 = 11</code>. Os 10 caracteres "Olá, Mundo" mais o terminador nulo <code>\0</code>.</p>
+                <p><code>if (!new_str)</code></p>
+                <p>Verifica se a alocação de memória falhou. Se sim, retorna <code>NULL</code>. Em nosso exemplo, a alocação foi bem-sucedida.</p>
+            </div>
+        </div>
+        
+        <div class="step">
+            <div class="step-title">Passo 7: Cópia e Retorno</div>
+            <div class="step-content">
+                <p><code>ft_strlcpy(new_str, s1 + i, j - i + 1);</code></p>
+                <p>Esta linha copia os caracteres. O <code>s1 + i</code> desloca o ponteiro para o início da substring (o <code>'O'</code> em <code>"Olá"</code>). O número de bytes a copiar é 11 (<code>j - i + 1</code>).</p>
+                <p>O resultado é a string <code>"Olá, Mundo"</code> (com <code>\0</code> no final) copiada para <code>new_str</code>.</p>
+                <p><code>return (new_str);</code></p>
+                <p>A função retorna o ponteiro para a nova string, completando a operação.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

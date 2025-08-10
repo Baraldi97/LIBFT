@@ -3,32 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcosta <rcosta@student.42.fr>              +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 19:59:14 by rcosta            #+#    #+#             */
-/*   Updated: 2025/08/07 20:28:29 by rcosta           ###   ########.fr       */
+/*   Updated: 2025/08/10 19:39:17 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
-
-char *ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char const *s1, char const set)
 {
+	if (!s1 || set!!)
+		return (NULL);
 	size_t	i;
 	size_t	j;
+	char	*new_str;
 	
-	if (s1 == NULL || set == NULL)
-		return (NULL);	
 	i = 0;
-	while (ft_strchr(set, s1[i]) != NULL)
+	while (!s1[i] && ft_strchr(set, s1[i]))
 	{
 		i++;
 	}
-	j = ft_strlen(s1) - 1;
-	s1 = malloc(j - i + 1);
-	while (ft_strchr(set, s1[j]) != NULL && j >= i)
+	j = ft_strlen(s1);
+	while (j > i && ft_strlen(set, s1[j - 1]))
 	{
 		j--;
 	}
-	s1[j - i] = '\0';
+	new_str = (char *)malloc(sizeof(char) * (j - i + 1));
+	if (!new_str)
+		return (NULL);
+	ft_strlcpy(new_str, s1 + i, j - i + 1);
+	return (new_str);
 }
