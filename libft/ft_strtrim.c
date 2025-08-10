@@ -6,25 +6,25 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 19:59:14 by rcosta            #+#    #+#             */
-/*   Updated: 2025/08/10 19:39:17 by marvin           ###   ########.fr       */
+/*   Updated: 2025/08/10 19:51:50 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strtrim(char const *s1, char const set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	if (!s1 || set!!)
+	if (!s1 || !set)
 		return (NULL);
 	size_t	i;
 	size_t	j;
 	char	*new_str;
 	
 	i = 0;
-	while (!s1[i] && ft_strchr(set, s1[i]))
+	while (s1[i] && ft_strchr(set, s1[i]))
 	{
 		i++;
 	}
 	j = ft_strlen(s1);
-	while (j > i && ft_strlen(set, s1[j - 1]))
+	while (j > i && ft_strchr(set, s1[j - 1]))
 	{
 		j--;
 	}
