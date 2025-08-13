@@ -3,21 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rcosta <rcosta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 19:59:14 by rcosta            #+#    #+#             */
-/*   Updated: 2025/08/10 19:53:19 by marvin           ###   ########.fr       */
+/*   Updated: 2025/08/13 15:18:12 by rcosta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	if (!s1 || !set)
-		return (NULL);
 	size_t	i;
 	size_t	j;
 	char	*new_str;
-	
+
+	if (!s1 || !set)
+		return (NULL);
 	i = 0;
 	while (s1[i] && ft_strchr(set, s1[i]))
 	{

@@ -6,27 +6,27 @@
 /*   By: rcosta <rcosta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 15:01:13 by rcosta            #+#    #+#             */
-/*   Updated: 2025/08/06 15:01:15 by rcosta           ###   ########.fr       */
+/*   Updated: 2025/08/13 15:07:35 by rcosta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
 size_t	ft_strlen(const char *str);
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
 	size_t	i;
 	size_t	len;
 
 	i = 0;
 	len = ft_strlen(src);
-	while (src[i] != '\0' && i + 1 < dstsize)
+	while (src[i] != '\0' && i + 1 < size)
 	{
 		dst[i] = src[i];
 		i++;
 	}
-	if (dstsize > 0)
+	if (size > 0)
 		dst[i] = '\0';
 	return (len);
 }
@@ -35,8 +35,8 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 // 	char	name[8] = "Rodrigo";
 // 	char	cpyname[8] = "";
 
-// 	printf("%s\n", name);
+// 	printf("name:%s copyname:%s\n", name, cpyname);
 // 	ft_strlcpy(cpyname, name, 8);
-// 	printf("%s", cpyname);
+// 	printf("name:%s copyname:%s\n", name, cpyname);
 // 	return(0);
 // }

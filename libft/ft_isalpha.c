@@ -5,12 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcosta <rcosta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/06 14:59:41 by rcosta            #+#    #+#             */
-/*   Updated: 2025/08/06 14:59:41 by rcosta           ###   ########.fr       */
+/*   Created: 2025/08/13 13:22:20 by rcosta            #+#    #+#             */
+/*   Updated: 2025/08/13 13:22:20 by rcosta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalpha(char c)
+#include "libft.h"
+
+int	ft_isalpha(int c)
 {
 	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
 	{
@@ -18,9 +20,6 @@ int	ft_isalpha(char c)
 	}
 	return (0);
 }
-
-// #include <stdio.h>
-
 // int main(void)
 // {
 //     printf("%d", ft_isalpha('0'));

@@ -10,34 +10,39 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
-static int count_words(char const *s, char c)
+static int	count_words(char const *s, char c)
 {
-    int count = 0;
-    int in_word = 0;
+	int	count;
+	int	in_word;
 
-    while (*s)
-    {
-        if (*s != c && in_word == 0)
-        {
-            in_word = 1;
-            count++;
-        }
-        else if (*s == c)
-        {
-            in_word = 0;
-        }
-        s++;
-    }
-    return count;
+	in_word = 0;
+	count = 0;
+	while (*s)
+	{
+		if (*s != c && in_word == 0)
+		{
+			in_word = 1;
+			count++;
+		}
+		else if (*s == c)
+		{
+			in_word = 0;
+		}
+		s++;
+	}
+	return (count);
 }
-static char **fill_array(char **result, char const *s, char c, int num_words)
+
+static char	**fill_array(char **result, char const *s, char c, int num_words)
 {
-	int i = 0;
-	int j = 0;
-	
+	int	i;
+	int	j;
 	int	start;
+
+	i = 0;
+	j = 0;
 	while (i < num_words)
 	{
 		while (s[j] && s[j] == c)
@@ -49,37 +54,38 @@ static char **fill_array(char **result, char const *s, char c, int num_words)
 		if (!result[i])
 		{
 			free_all(result, i);
-			return NULL;
+			return (NULL);
 		}
 		i++;
 	}
 	result[i] = NULL;
-	return result;
+	return (result);
 }
-static void free_all(char **arr, int i)
+
+static void	free_all(char **arr, int i)
 {
-    while (i > 0)
-    {
-        i--;
-        free(arr[i]);
-    }
-    free(arr);
+	while (i > 0)
+	{
+		i--;
+		free(arr[i]);
+	}
+	free(arr);
 }
-char **ft_split(char const *s, char c)
+
+char	**ft_split(char const *s, char c)
 {
 	char	**result;
 	int		num_words;
 
 	if (!s)
-		return NULL;
-
+		return (NULL);
 	num_words = count_words(s, c);
 	result = (char **)malloc(sizeof(char *) * (num_words + 1));
 	if (!result)
-		return NULL;
+		return (NULL);
 	if (!fill_array(result, s, c, num_words))
 	{
-		return NULL;
+		return (NULL);
 	}
-	return result;
+	return (result);
 }

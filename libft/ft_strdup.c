@@ -6,11 +6,11 @@
 /*   By: rcosta <rcosta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 17:03:57 by rcosta            #+#    #+#             */
-/*   Updated: 2025/08/07 16:14:06 by rcosta           ###   ########.fr       */
+/*   Updated: 2025/08/13 16:12:31 by rcosta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
 char	*ft_strdup(const char	*s)
 {
