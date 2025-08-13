@@ -6,7 +6,7 @@
 /*   By: rcosta <rcosta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 17:03:57 by rcosta            #+#    #+#             */
-/*   Updated: 2025/08/13 16:12:31 by rcosta           ###   ########.fr       */
+/*   Updated: 2025/08/13 18:52:30 by rcosta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_strdup(const char	*s)
 
 	i = 0;
 	s_size = ft_strlen(s);
-	ptr = ft_malloc(s_size + 1);
+	ptr = malloc(s_size + 1);
 	if (!ptr)
 		return (NULL);
 	ns = (char *)ptr;

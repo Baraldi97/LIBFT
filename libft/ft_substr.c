@@ -6,13 +6,13 @@
 /*   By: rcosta <rcosta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 15:34:44 by rcosta            #+#    #+#             */
-/*   Updated: 2025/08/07 19:49:12 by rcosta           ###   ########.fr       */
+/*   Updated: 2025/08/13 17:52:07 by rcosta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
-char	*ft_substr(const char *s, unsigned int start, size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*ptr;
 	size_t	i;

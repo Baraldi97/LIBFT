@@ -34,6 +34,15 @@ static int	count_words(char const *s, char c)
 	}
 	return (count);
 }
+static void	free_all(char **arr, int i)
+{
+	while (i > 0)
+	{
+		i--;
+		free(arr[i]);
+	}
+	free(arr);
+}
 
 static char	**fill_array(char **result, char const *s, char c, int num_words)
 {
@@ -60,16 +69,6 @@ static char	**fill_array(char **result, char const *s, char c, int num_words)
 	}
 	result[i] = NULL;
 	return (result);
-}
-
-static void	free_all(char **arr, int i)
-{
-	while (i > 0)
-	{
-		i--;
-		free(arr[i]);
-	}
-	free(arr);
 }
 
 char	**ft_split(char const *s, char c)
