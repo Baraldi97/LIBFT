@@ -6,7 +6,7 @@
 /*   By: rcosta <rcosta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 15:34:44 by rcosta            #+#    #+#             */
-/*   Updated: 2025/08/13 17:52:07 by rcosta           ###   ########.fr       */
+/*   Updated: 2025/08/13 21:06:55 by rcosta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,12 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (NULL);
 	while (i < len)
 	{
-		ptr[i] = s[i + start];
+		ptr[i] = s[i + (unsigned int)start];
 		i++;
 	}
 	ptr[i] = '\0';
 	return (ptr);
 }
-// #include <stdio.h>
-
 // int	main(void)
 // {
 // 	char	*name;

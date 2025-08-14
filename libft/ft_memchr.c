@@ -21,7 +21,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	i = 0;
 	while (i < n)
 	{
-		if (var_s[i] == c)
+		if (var_s[i] == (unsigned char) c)
 			return (&var_s[i]);
 		i++;
 	}
@@ -29,7 +29,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 }
 // int	main(void)
 // {
-	// int *test;
+// 	int *test;
 // 	test = ft_memchr("Rodrigo", 2, 8);
 // 	printf ("%p\n", test);
 // 	return (0);

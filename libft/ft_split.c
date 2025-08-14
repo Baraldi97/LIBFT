@@ -34,6 +34,7 @@ static int	count_words(char const *s, char c)
 	}
 	return (count);
 }
+
 static void	free_all(char **arr, int i)
 {
 	while (i > 0)
