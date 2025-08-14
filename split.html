@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizador Interativo de ft_split</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .code-container {
+            position: relative;
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+            margin-bottom: 20px;
+            height: 300px;
+            overflow-y: scroll;
+            white-space: pre;
+            font-family: 'Courier New', Courier, monospace;
+            tab-size: 4;
+        }
+        .code-container pre {
+            margin: 0;
+        }
+        .line {
+            padding: 2px 0;
+            transition: background-color 0.3s;
+        }
+        .line-number {
+            color: #727272;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+            user-select: none;
+        }
+        .line-number:hover {
+            color: #a0a0a0;
+        }
+        .highlight {
+            background-color: #3a505b;
+            border-radius: 2px;
+        }
+        .execution-log {
+            border: 1px solid #ddd;
+            background: #fafafa;
+            padding: 15px;
+            border-radius: 4px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        .execution-log p {
+            margin: 0 0 5px 0;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .controls button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+        }
+        #next-step-btn {
+            background-color: #3498db;
+        }
+        #reset-btn {
+            background-color: #e74c3c;
+        }
+        #result-display {
+            margin-top: 20px;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+        .explanation-container {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            background: #f0f0f5;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Visualizador Interativo de `ft_split`</h1>
+    <p>Insira uma string e um caractere delimitador para visualizar a execução da função passo a passo. Clique nos números das linhas para ver a explicação detalhada do código.</p>
+
+    <div class="input-group">
+        <label for="string-input">String de entrada:</label>
+        <input type="text" id="string-input" value="hello-world-from-js">
+    </div>
+    <div class="input-group">
+        <label for="delimiter-input">Caractere delimitador:</label>
+        <input type="text" id="delimiter-input" maxlength="1" value="-">
+    </div>
+
+    <div class="controls">
+        <button id="next-step-btn">Próximo Passo</button>
+        <button id="reset-btn">Reiniciar</button>
+    </div>
+
+    <hr>
+
+    <div class="code-container">
+        <pre id="code-content"></pre>
+    </div>
+
+    <div class="explanation-container">
+        <h2>Explicação da Linha</h2>
+        <p id="line-explanation">Clique em um número de linha no código para ver a sua explicação.</p>
+    </div>
+
+    <hr>
+
+    <h2>Log de Execução</h2>
+    <div class="execution-log" id="log-content">
+        <p>Clique em "Próximo Passo" para começar.</p>
+    </div>
+
+    <div id="result-display"></div>
+</div>
+
+<script>
+    const stringInput = document.getElementById('string-input');
+    const delimiterInput = document.getElementById('delimiter-input');
+    const nextStepBtn = document.getElementById('next-step-btn');
+    const resetBtn = document.getElementById('reset-btn');
+    const codeContent = document.getElementById('code-content');
+    const logContent = document.getElementById('log-content');
+    const resultDisplay = document.getElementById('result-display');
+    const lineExplanation = document.getElementById('line-explanation');
+
+    const code = `
+char    **ft_split(char const *s, char c)
+{
+    char    **result;
+    int     num_words;
+
+    if (!s)
+        return (NULL);
+    num_words = count_words(s, c);
+    result = (char **)malloc(sizeof(char *) * (num_words + 1));
+    if (!result)
+        return (NULL);
+    if (!fill_array(result, s, c, num_words))
+    {
+        return (NULL);
+    }
+    return (result);
+}
+
+// Funções auxiliares
+static int  count_words(char const *s, char c)
+{
+    int count;
+    int in_word;
+
+    in_word = 0;
+    count = 0;
+    while (*s)
+    {
+        if (*s != c && in_word == 0)
+        {
+            in_word = 1;
+            count++;
+        }
+        else if (*s == c)
+        {
+            in_word = 0;
+        }
+        s++;
+    }
+    return (count);
+}
+
+static void free_all(char **arr, int i)
+{
+    while (i > 0)
+    {
+        i--;
+        free(arr[i]);
+    }
+    free(arr);
+}
+
+static char **fill_array(char **result, char const *s, char c, int num_words)
+{
+    int i;
+    int j;
+    int start;
+
+    i = 0;
+    j = 0;
+    while (i < num_words)
+    {
+        while (s[j] && s[j] == c)
+        j++;
+        start = j;
+        while (s[j] && s[j] != c)
+        j++;
+        result[i] = ft_substr(s, start, j - start);
+        if (!result[i])
+        {
+            free_all(result, i);
+            return (NULL);
+        }
+        i++;
+    }
+    result[i] = NULL;
+    return (result);
+}
+    `.trim();
+
+    const lines = code.split('\n');
+    let currentStep = 0;
+    let string_to_split;
+    let delimiter;
+    let wordsCount;
+    let result_array;
+
+    const explanations = {
+        // ft_split explanations
+        0: "Declaração da função principal `ft_split` que recebe uma string e um caractere delimitador.",
+        2: "Declaração de um ponteiro para ponteiros (`char**`) que será o array de strings e um inteiro para o número de palavras.",
+        5: "Verifica se a string de entrada `s` é nula. Se for, retorna `NULL` imediatamente para evitar erros.",
+        6: "Chama a função auxiliar `count_words` para contar quantas palavras existem na string.",
+        7: "Aloca memória para o array de ponteiros que irá armazenar as palavras. O tamanho é `num_words + 1` para o ponteiro `NULL` final.",
+        8: "Verifica se a alocação de memória falhou. Se sim, retorna `NULL`.",
+        9: "Chama a função auxiliar `fill_array` para extrair as palavras e preencher o array `result`.",
+        11: "Se `fill_array` retornar `NULL` (indicando uma falha de alocação interna), a função libera o array parcialmente preenchido e retorna `NULL`.",
+        14: "Se tudo correr bem, retorna o array de strings que agora contém todas as palavras.",
+
+        // count_words explanations
+        17: "Declaração da função auxiliar `count_words`. É estática, o que significa que só pode ser chamada dentro deste arquivo.",
+        20: "Declara as variáveis `count` (contador de palavras) e `in_word` (uma flag para saber se estamos dentro de uma palavra).",
+        22: "Inicializa as variáveis. `in_word` começa em 0 (fora de uma palavra) e `count` em 0.",
+        23: "Inicia um loop que percorre a string `s` caractere por caractere (`*s`) até encontrar o terminador nulo (`\0`).",
+        25: "Condição principal: Se o caractere atual não for o delimitador `c` E a flag `in_word` for 0 (estamos fora de uma palavra)...",
+        27: "...muda a flag `in_word` para 1 (estamos dentro de uma palavra)...",
+        28: "...e incrementa o contador de palavras.",
+        29: "Se a condição anterior não for verdadeira, mas o caractere atual for o delimitador...",
+        31: "...reseta a flag `in_word` para 0, indicando que não estamos mais dentro de uma palavra.",
+        33: "Avança para o próximo caractere da string.",
+        34: "Retorna o número total de palavras contadas.",
+
+        // free_all explanations
+        37: "Declara a função auxiliar `free_all` para liberar a memória alocada em caso de erro.",
+        39: "Inicia um loop que libera a memória de cada string no array, começando da última até a primeira.",
+        41: "Libera o espaço de memória da string atual (`arr[i]`).",
+        42: "Após liberar todas as strings, libera o espaço de memória do próprio array de ponteiros.",
+
+        // fill_array explanations
+        45: "Declara a função auxiliar `fill_array`, responsável por preencher o array com as palavras extraídas.",
+        48: "Declara as variáveis `i` (índice para o array de resultado), `j` (índice para a string de entrada) e `start` (índice do início de uma nova palavra).",
+        50: "Inicia as variáveis de índice `i` e `j` com 0.",
+        51: "Inicia um loop que executa para cada palavra que precisa ser extraída.",
+        53: "Loop interno: avança o índice `j` pulando todos os caracteres delimitadores no início ou entre as palavras.",
+        55: "Marca o índice `j` como o início (`start`) da palavra atual.",
+        56: "Loop interno: avança o índice `j` até o próximo delimitador ou o final da string, para encontrar o fim da palavra.",
+        58: "Usa a função `ft_substr` para criar uma nova string (a palavra) e a armazena na posição `i` do array `result`.",
+        59: "Verifica se a alocação de memória para a nova string falhou.",
+        61: "Se a alocação falhar, chama `free_all` para liberar toda a memória alocada e retorna `NULL`.",
+        63: "Incrementa o índice `i` para a próxima posição do array de resultado.",
+        65: "Após o loop, adiciona `NULL` no final do array para indicar o seu término.",
+        66: "Retorna o array de strings preenchido."
+    };
+
+    function init() {
+        string_to_split = stringInput.value;
+        delimiter = delimiterInput.value;
+        wordsCount = 0;
+        result_array = [];
+        currentStep = 0;
+        logContent.innerHTML = `<p>Simulação iniciada com a string: "<strong>${string_to_split}</strong>" e o delimitador: "<strong>${delimiter}</strong>".</p>`;
+        resultDisplay.innerHTML = '';
+        lineExplanation.innerHTML = `Clique em um número de linha no código para ver a sua explicação.`;
+        nextStepBtn.disabled = false;
+        renderCode();
+    }
+
+    function renderCode(lineIndex = -1) {
+        codeContent.innerHTML = lines.map((line, index) => {
+            const classAttr = index === lineIndex ? ' class="line highlight"' : ' class="line"';
+            return `<span${classAttr}><a href="#" class="line-number" data-line-index="${index}">${index + 1}</a>&nbsp;&nbsp;${line.replace(/\t/g, '&nbsp;&nbsp;&nbsp;&nbsp;')}</span>`;
+        }).join('\n');
+    }
+
+    function log(message) {
+        logContent.innerHTML += `<p>${message}</p>`;
+        logContent.scrollTop = logContent.scrollHeight;
+    }
+
+    function scrollCodeToLine(lineIndex) {
+        const lineElement = codeContent.querySelector(`.line:nth-child(${lineIndex + 1})`);
+        if (lineElement) {
+            const containerHeight = codeContent.clientHeight;
+            const elementTop = lineElement.offsetTop;
+            const elementHeight = lineElement.clientHeight;
+            codeContent.scrollTop = elementTop - (containerHeight / 2) + (elementHeight / 2);
+        }
+    }
+
+    function nextStep() {
+        let lineIndex;
+        let message;
+        
+        const mainCodeEnd = 13;
+        const countWordsStart = 16;
+        const freeAllStart = 35;
+        const fillArrayStart = 43;
+
+        switch (currentStep) {
+            case 0:
+                lineIndex = 0;
+                message = 'A função `ft_split` vai iniciar.';
+                break;
+            case 1:
+                lineIndex = 4;
+                message = 'Verificando se a string de entrada é nula. OK.';
+                break;
+            case 2:
+                lineIndex = 5;
+                log('Chamando a função `count_words`.');
+                wordsCount = count_words(string_to_split, delimiter);
+                log(`A função ` + '`count_words`' + ` retornou ${wordsCount} palavras.`);
+                message = 'Número de palavras contado: ' + wordsCount + '.';
+                break;
+            case 3:
+                lineIndex = 6;
+                message = 'Alocando memória para um array de ' + (wordsCount + 1) + ' ponteiros.';
+                break;
+            case 4:
+                lineIndex = 7;
+                message = 'Verificando se a alocação de memória falhou. OK.';
+                break;
+            case 5:
+                lineIndex = 8;
+                log('Chamando a função `fill_array`.');
+                message = 'Agora, o array de strings será preenchido.';
+                break;
+            case 6:
+                let current_word_index = 0;
+                let s_index = 0;
+                while (current_word_index < wordsCount) {
+                    while (string_to_split[s_index] && string_to_split[s_index] === delimiter) {
+                        s_index++;
+                    }
+                    const start_index = s_index;
+                    while (string_to_split[s_index] && string_to_split[s_index] !== delimiter) {
+                        s_index++;
+                    }
+                    const word = string_to_split.substring(start_index, s_index);
+                    result_array.push(word);
+                    log(`• Extraída a palavra "<strong>${word}</strong>" (índice ${current_word_index}).`);
+                    current_word_index++;
+                }
+                result_array.push(null);
+                log('• O array foi finalizado com NULL.');
+                lineIndex = fillArrayStart + 16;
+                message = 'A função `fill_array` completou e retornou o array de strings.';
+                break;
+            case 7:
+                lineIndex = 11;
+                message = 'Verificando o retorno de `fill_array`. O preenchimento foi um sucesso.';
+                break;
+            case 8:
+                lineIndex = 14;
+                message = 'A função `ft_split` retorna o array de strings alocado.';
+                const display_array = result_array.map(w => w === null ? 'NULL' : `"${w}"`).join(', ');
+                resultDisplay.innerHTML = `<h2>Resultado Final</h2><p>[${display_array}]</p>`;
+                break;
+            default:
+                message = 'Fim da execução.';
+                lineIndex = -1;
+                nextStepBtn.disabled = true;
+                break;
+        }
+
+        log(message);
+        renderCode(lineIndex);
+        if (lineIndex !== -1) {
+            scrollCodeToLine(lineIndex);
+        }
+        currentStep++;
+    }
+
+    function count_words(s, c) {
+        let count = 0;
+        let in_word = false;
+        for (let i = 0; i < s.length; i++) {
+            if (s[i] !== c && !in_word) {
+                in_word = true;
+                count++;
+            } else if (s[i] === c) {
+                in_word = false;
+            }
+        }
+        return count;
+    }
+
+    // Event listener para os números de linha
+    codeContent.addEventListener('click', (event) => {
+        if (event.target.classList.contains('line-number')) {
+            event.preventDefault();
+            const lineIndex = parseInt(event.target.dataset.lineIndex);
+            const explanation = explanations[lineIndex];
+            if (explanation) {
+                lineExplanation.innerHTML = `<strong>Linha ${lineIndex + 1}:</strong> ${explanation}`;
+            } else {
+                lineExplanation.innerHTML = `<strong>Linha ${lineIndex + 1}:</strong> Nenhuma explicação detalhada disponível.`;
+            }
+        }
+    });
+
+    init();
+    nextStepBtn.addEventListener('click', nextStep);
+    resetBtn.addEventListener('click', init);
+</script>
+
+</body>
+</html>
