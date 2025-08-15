@@ -6,7 +6,7 @@
 /*   By: rcosta <rcosta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 15:34:44 by rcosta            #+#    #+#             */
-/*   Updated: 2025/08/13 21:06:55 by rcosta           ###   ########.fr       */
+/*   Updated: 2025/08/14 21:15:50 by rcosta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t	i;
 
 	i = 0;
-	ptr = malloc(len +1);
+	ptr = malloc(len + 1);
 	if (ptr == NULL)
 		return (NULL);
 	while (i < len)

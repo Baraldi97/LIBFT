@@ -6,7 +6,7 @@
 /*   By: rcosta <rcosta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 16:57:20 by rcosta            #+#    #+#             */
-/*   Updated: 2025/08/13 21:10:51 by rcosta           ###   ########.fr       */
+/*   Updated: 2025/08/14 20:53:36 by rcosta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,13 @@ int	ft_atoi(const char *nptr)
 
 	result = 0;
 	sign = 1;
-	while (*nptr == ' ' || (*nptr >= 9 && *nptr <= 13))
+	while (*nptr == 32 || (*nptr >= 9 && *nptr <= 13))
 		nptr++;
-	while (*nptr == '+' || *nptr == '-')
+	if (*nptr == '-' || *nptr == '+')
 	{
 		if (*nptr == '-')
 			sign *= -1;
+		nptr++;
 	}
 	while (*nptr >= '0' && *nptr <= '9')
 	{
@@ -33,3 +34,13 @@ int	ft_atoi(const char *nptr)
 	}
 	return (result * sign);
 }
+// int	main(void)
+// {
+// 	char	*test;
+// 	int		tes2;
+
+// 	test = " -9";
+// 	tes2 = ft_atoi(test);
+// 	printf("%d\n", tes2);
+// 	return (0);
+// }
