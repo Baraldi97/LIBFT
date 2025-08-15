@@ -26,7 +26,6 @@ static int	nbnb(int nb)
 	}
 	return (len);
 }
-
 char	*ft_itoa(int n)
 {
 	int		i;
