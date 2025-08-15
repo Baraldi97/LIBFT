@@ -40,7 +40,7 @@ $(NAME):	$(OBJECTS) $(INCLUDE)
 clean:
 		$(RM) $(OBJECTS)
 
-fclean:	clean
+fclean:	clean 
 		$(RM) $(NAME)
 
 re:	fclean all

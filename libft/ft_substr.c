@@ -6,7 +6,7 @@
 /*   By: rcosta <rcosta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 15:34:44 by rcosta            #+#    #+#             */
-/*   Updated: 2025/08/14 21:15:50 by rcosta           ###   ########.fr       */
+/*   Updated: 2025/08/15 15:45:48 by rcosta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,31 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*ptr;
-	size_t	i;
+	char	*new;
+	size_t	slen;
+	size_t	finish;
 
-	i = 0;
-	ptr = malloc(len + 1);
-	if (ptr == NULL)
-		return (NULL);
-	while (i < len)
+	if (!s)
+		return (0);
+	slen = ft_strlen(s);
+	if (start >= slen)
 	{
-		ptr[i] = s[i + (unsigned int)start];
-		i++;
+		new = malloc(1);
+		if (!new)
+			return (0);
+		new[0] = '\0';
+		return (new);
 	}
-	ptr[i] = '\0';
-	return (ptr);
+	finish = slen - start;
+	if (finish > len)
+		finish = len;
+	new = malloc(finish + 1);
+	if (!new)
+		return (0);
+	ft_strlcpy(new, s + start, finish + 1);
+	return (new);
 }
+
 // int	main(void)
 // {
 // 	char	*name;
