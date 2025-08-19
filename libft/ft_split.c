@@ -56,10 +56,10 @@ static char	**fill_array(char **result, char const *s, char c, int num_words)
 	while (i < num_words)
 	{
 		while (s[j] && s[j] == c)
-		j++;
+			j++;
 		start = j;
 		while (s[j] && s[j] != c)
-		j++;
+			j++;
 		result[i] = ft_substr(s, start, j - start);
 		if (!result[i])
 		{

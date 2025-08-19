@@ -30,3 +30,11 @@ void	ft_putnbr_fd(int n, int fd)
 	else
 		ft_putchar_fd(nb + '0', fd);
 }
+// int	main (void)
+// {
+// 	int	test_nb;
+
+// 	test_nb = -123; 
+// 	ft_putnbr_fd(test_nb, 1);
+// 	return (0);
+// }
