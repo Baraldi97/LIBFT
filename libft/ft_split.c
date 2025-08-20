@@ -35,16 +35,6 @@ static int	count_words(char const *s, char c)
 	return (count);
 }
 
-static void	free_all(char **arr, int i)
-{
-	while (i > 0)
-	{
-		i--;
-		free(arr[i]);
-	}
-	free(arr);
-}
-
 static char	**fill_array(char **result, char const *s, char c, int num_words)
 {
 	int	i;
@@ -61,11 +51,6 @@ static char	**fill_array(char **result, char const *s, char c, int num_words)
 		while (s[j] && s[j] != c)
 			j++;
 		result[i] = ft_substr(s, start, j - start);
-		if (!result[i])
-		{
-			free_all(result, i);
-			return (NULL);
-		}
 		i++;
 	}
 	result[i] = NULL;
@@ -84,8 +69,17 @@ char	**ft_split(char const *s, char c)
 	if (!result)
 		return (NULL);
 	if (!fill_array(result, s, c, num_words))
-	{
 		return (NULL);
-	}
 	return (result);
 }
+
+// int	main(void)
+// {
+// 	char	**test;
+// 	test = "Rodrigo,Baraldi,Costa";
+
+// 	printf("The test variable now is: %s\n", test);
+// 	test = ft_split(test, ',');
+// 	printf("The test variable now is: %s\n", test);
+// 	return (0);
+// }
