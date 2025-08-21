@@ -6,7 +6,7 @@
 /*   By: rcosta <rcosta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 17:03:57 by rcosta            #+#    #+#             */
-/*   Updated: 2025/08/13 18:52:30 by rcosta           ###   ########.fr       */
+/*   Updated: 2025/08/20 19:17:58 by rcosta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,3 +33,13 @@ char	*ft_strdup(const char	*s)
 	ns[i] = '\0';
 	return (ns);
 }
+// int	main(void)
+// {
+// 	char	*s1;
+// 	char	*test;
+
+// 	s1 = "Rodrigo";
+// 	test = ft_strdup(s1);
+// 	printf("%s\n", test);
+// 	return (0);
+// }

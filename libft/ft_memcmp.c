@@ -33,3 +33,16 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	}
 	return (0);
 }
+
+// int	main(void)
+// {
+// 	char	*str1;
+// 	char	*str2;
+// 	int		test;
+
+// 	str1 = "Rodrigo";
+// 	str2 = "Rodrigo";
+// 	test = ft_memcmp(str1, str2, 8);
+// 	printf("%d\n", test);
+// 	return (0);
+// }

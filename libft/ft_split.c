@@ -72,13 +72,3 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	return (result);
 }
-
-// int	main(void)
-// {
-// 	char	**test;
-// 	test = "Rodrigo,Baraldi,Costa";
-// 	printf("The test variable now is: %s\n", test);
-// 	test = ft_split(test, ',');
-// 	printf("The test variable now is: %s\n", test);
-// 	return (0);
-// }

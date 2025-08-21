@@ -20,7 +20,5 @@ void	ft_putchar_fd(char c, int fd)
 // int main(void)
 // {
 //     ft_putchar_fd('A', 1);
-//     ft_putchar_fd('B', 2);
-//     ft_putchar_fd('\n', 1); 
 //     return (0);
 // }
