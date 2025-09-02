@@ -54,13 +54,3 @@ char	*ft_itoa(int n)
 	}
 	return (str);
 }
-
-// int	main(void)
-// {
-// 	int		nb;
-// 	char	*test;
-
-// 	nb = -28;
-// 	test = ft_itoa(nb);
-// 	printf("%s\n", test);
-// }

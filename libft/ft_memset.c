@@ -26,12 +26,3 @@ void	*ft_memset(void *s, int c, size_t n)
 	}
 	return (s);
 }
-// int main(void)
-// {
-//     char    name[20] = "rodrigo";
-
-//     printf("before: %s\n", name);
-//     ft_memset(name + 2, '*', 5);
-//     printf("after: %s\n", name);
-//     return (0);
-// }

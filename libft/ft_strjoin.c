@@ -6,7 +6,7 @@
 /*   By: rcosta <rcosta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 19:36:12 by rcosta            #+#    #+#             */
-/*   Updated: 2025/08/20 18:08:21 by rcosta           ###   ########.fr       */
+/*   Updated: 2025/08/21 15:54:17 by rcosta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,3 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	conct[i + j] = '\0';
 	return (conct);
 }
-// int	main(void)
-// {
-// 	char	*str1;
-// 	char	*str2;
-// 	char	*test;
-
-// 	str1 = "Rodrigo ";
-// 	str2 = "Baraldi";
-// 	test = ft_strjoin(str1, str2);
-// 	printf("%s\n", test);
-// 	return (0);
-// }

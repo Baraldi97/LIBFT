@@ -20,9 +20,3 @@ int	ft_isprint(int c)
 	}
 	return (0);
 }
-// int	main(void)
-// {
-// 	int	c = ft_isprint(2);
-// 	printf ("%d\n", c);
-// 	return (0);
-// }

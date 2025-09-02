@@ -18,11 +18,3 @@ void	ft_putstr_fd(char *s, int fd)
 		return ;
 	write(fd, s, ft_strlen(s));
 }
-// int	main(void)
-// {
-// 	char	*word;
-
-// 	word = "Rodrigo";
-// 	ft_putstr_fd(word, 1);
-// 	return (0);
-// }

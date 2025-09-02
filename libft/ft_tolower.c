@@ -6,7 +6,7 @@
 /*   By: rcosta <rcosta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 15:01:55 by rcosta            #+#    #+#             */
-/*   Updated: 2025/08/13 15:39:29 by rcosta           ###   ########.fr       */
+/*   Updated: 2025/08/21 15:55:10 by rcosta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,3 @@ int	ft_tolower(int c)
 		return (c + 32);
 	return (c);
 }
-// int	main(void)
-// {
-// 	char	letter;
-// 	letter = 'R';
-
-// 	letter = ft_tolower(letter);
-// 	printf("%d", letter);
-// 	return(0);
-// }

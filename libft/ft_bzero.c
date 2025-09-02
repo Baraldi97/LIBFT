@@ -24,12 +24,3 @@ void	ft_bzero(void *s, size_t n)
 		n --;
 	}
 }
-// int main(void)
-// {
-//     char    name[8] = "Baraldi";
-
-//     printf("before: %s\n", name);
-//     ft_bzero(name + 2, 6);
-//     printf("after: %s\n", name);
-//     return(0);
-// }

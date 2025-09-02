@@ -6,7 +6,7 @@
 /*   By: rcosta <rcosta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 15:34:44 by rcosta            #+#    #+#             */
-/*   Updated: 2025/08/19 15:55:21 by rcosta           ###   ########.fr       */
+/*   Updated: 2025/08/21 15:55:07 by rcosta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,3 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	ft_strlcpy(new, s + start, finish + 1);
 	return (new);
 }
-
-// int	main(void)
-// {
-// 	char	*name;
-// 	name = ft_substr("Rodrigo", 2, 3);
-// 	printf("%s", name);
-// 	return (0);
-// }

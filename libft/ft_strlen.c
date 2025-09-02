@@ -24,8 +24,3 @@ size_t	ft_strlen(const char *s)
 	}
 	return (len);
 }
-// int main(void)
-// {
-//     printf("%ld", ft_strlen("Rodrigo"));
-//     return (0);
-// }

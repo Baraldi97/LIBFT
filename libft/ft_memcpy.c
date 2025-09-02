@@ -32,13 +32,3 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	}
 	return (dest);
 }
-// int	main(void)
-// {
-// 	char	name[8] = "Rodrigo";
-// 	char	new[8] = "";
-
-// 	printf("name': %s new: %s\n", name, new);
-// 	ft_memcpy(new, name, 8);
-// 	printf("name': %s new: %s\n", name, new);
-// 	return (0);
-// }

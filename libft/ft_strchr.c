@@ -24,17 +24,3 @@ char	*ft_strchr(const char *s, int c)
 		return ((char *)s);
 	return (NULL);
 }
-
-// #include <stdio.h>
-
-// int main(void)
-// {
-//     char    name[8] = "Rodrigo";
-//     char    *result;
-
-//     printf("Name is: %s\n", name);
-//     result = ft_strchr(name, 'd');
-//     printf("Substring is: %s \n", result);
-//     printf("The first occurence is: %c\n", *result);
-//     return (0);
-// }

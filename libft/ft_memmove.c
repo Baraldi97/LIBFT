@@ -38,10 +38,3 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	}
 	return (dst);
 }
-// int main(void)
-// {
-//     char str[11] = "ABCDEFGHIJ";
-//     ft_memmove(str + 3, str, 3);
-//     printf("%s\n", str);
-//     return 0;
-// }

@@ -20,9 +20,3 @@ int	ft_isascii(int c)
 	}
 	return (0);
 }
-// int	main(void)
-// {
-// 	int	c = ft_isascii('b');
-// 	printf ("%d\n", c);
-// 	return (0);
-// }

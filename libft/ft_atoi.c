@@ -6,7 +6,7 @@
 /*   By: rcosta <rcosta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 16:57:20 by rcosta            #+#    #+#             */
-/*   Updated: 2025/08/15 16:09:20 by rcosta           ###   ########.fr       */
+/*   Updated: 2025/08/21 15:53:11 by rcosta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,3 @@ int	ft_atoi(const char *nptr)
 	}
 	return (result * sign);
 }
-// int	main(void)
-// {
-// 	char	*test;
-// 	int		tes2;
-
-// 	test = " -9";
-// 	tes2 = ft_atoi(test);
-// 	printf("%d\n", tes2);
-// 	return (0);
-// }

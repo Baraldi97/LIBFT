@@ -27,10 +27,3 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	}
 	return (NULL);
 }
-// int	main(void)
-// {
-// 	int *test;
-// 	test = ft_memchr("Rodrigo", 2, 8);
-// 	printf ("%p\n", test);
-// 	return (0);
-// }

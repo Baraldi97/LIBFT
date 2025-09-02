@@ -25,14 +25,3 @@ char	*ft_strrchr(const char *s, int c)
 	}
 	return (NULL);
 }
-
-// int main(void)
-// {
-//     char    name[8] = "Baraldi";
-//     char    *result;
-
-//     printf("Name is:%s\n", name);
-//     result = ft_strrchr(name, 'a');
-//     printf("Name is:%s\n", result);
-//     return (0);
-// }
