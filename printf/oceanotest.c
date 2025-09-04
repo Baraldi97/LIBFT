@@ -6,7 +6,7 @@
 /*   By: rcosta <rcosta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 16:04:59 by rcosta            #+#    #+#             */
-/*   Updated: 2025/09/04 16:47:15 by rcosta           ###   ########.fr       */
+/*   Updated: 2025/09/04 16:53:01 by rcosta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,6 @@ int	main()
 {
 	float	avarage_age;
 	
-	avarage_age = avarage(3, 10, 15, 2); // 5 here, or the first number, is actually a indicator of hojw many arguments are here
-	printf("The avarage age of those 3 pople is %f\n", avarage_age);
+	avarage_age = avarage(3, 10, 15, 20); // 5 here, or the first number, is actually a indicator of hojw many arguments are here
+	printf("The avarage age of those 3 pople is %.2f\n", avarage_age);
 }
