@@ -15,6 +15,7 @@
 #include <stdlib.h>
 #include <stdarg.h>
 
+//A função 
 int	print_char(int c)
 {
 	return write(1, &c, 1);
@@ -22,16 +23,14 @@ int	print_char(int c)
 
 int	print_str(char *s)
 {
-	int	count;
+	int	i;
 
-	count = 0;
-	while (*s)
-	{
-		print_char((int)*s); //Por que aqui tenho int antes do meu ponteiro para string?
-		count ++; //Aqui é para ir incrementando o numero de bytes
-		s ++; //Aqui é para percorrer a string e poder ir incrementando mais
-	}
-	return count;
+	i = 0;
+	if (!s)
+		s = "(null)";
+	while (s[i] != '\0')
+		i += print_char(s[i]);
+	return (i);
 }
 
 int	print_digit(long	n, int	base, char *base_chars)
@@ -70,9 +69,9 @@ int	print_format(char type, va_list args) //Aqui eu preciso entender melhor o po
 		count += print_char(va_arg(args, int)); //Relembrar aqui, por quê +=
 	else if (type == 's')
 		count += print_str(va_arg(args, char *));
-	else if (type == 'd')
+	else if (type == 'p')
 		count += print_digit((long)va_arg(args, int), 10, "0123456789"); //Usei o print digit para o meu int e hexadecimal, preciso entender melhor o porquê do cast explicito para long aqui e no hexadecimal também
-	else if (type == 'i')
+	else if (type == 'i' || type == 'd')
 		count += print_digit((long)va_arg(args, int), 10, "0123456789");
 	else if (type == 'u')
 		count += print_digit((long)va_arg(args, int), 10, "0123456789");
@@ -109,10 +108,12 @@ int	ft_printf(const char *format, ...)
 
 int	main()
 {
-	char *word;
+	// char	*word;
+	// void	*ptn;
 
-	word = "Ro";
-	ft_printf("My name is %s, I'm %d years old, my age in Hexadeximal is %x, in %% CAPITAL is %X\n", word, 42, 42, 42);
-	printf("My name is %s, I'm %d years old, my age in Hexadeximal is %x, in %% CAPITAL is %X\n", word, 42, 42, 42);
+	// ptn = ""
+	// word = "Ro"
+	ft_printf("%p My name is %s, I'm %d years old, I'm %icm. My age in Hexadeximal is %x, %% and in CAPITAL is %X\n", "", "Ro", 28, 168, 28, 28);
+	printf("%p My name is %s, I'm %d years old, I'm %icm. My age in Hexadeximal is %x, %% and in CAPITAL is %X\n", "", "Ro", 28, 168, 28, 28);
 	return (0);
 }
