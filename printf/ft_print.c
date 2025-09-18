@@ -15,19 +15,19 @@
 #include <stdlib.h>
 #include <stdarg.h>
 
-//A função 
+//A função print_char vai printar um caractere (Aqui usamos INT devido ao Type promotion em c)
 int	print_char(int c)
 {
 	return write(1, &c, 1);
 }
-
+//A função print_str vai nos permitir escrever uma string e escrever o erro para o ponteiro %p
 int	print_str(char *s)
 {
 	int	i;
 
 	i = 0;
-	if (!s)
-		s = "(null)";
+	if (s[i] != '\0')
+		s = "(nill)";
 	while (s[i] != '\0')
 		i += print_char(s[i]);
 	return (i);
@@ -113,7 +113,7 @@ int	main()
 
 	// ptn = ""
 	// word = "Ro"
-	ft_printf("%p My name is %s, I'm %d years old, I'm %icm. My age in Hexadeximal is %x, %% and in CAPITAL is %X\n", "", "Ro", 28, 168, 28, 28);
+	ft_printf("%p My name is %p, I'm %d years old, I'm %icm. My age in Hexadeximal is %x, %% and in CAPITAL is %X\n", "", "Ro", 28, 168, 28, 28);
 	printf("%p My name is %s, I'm %d years old, I'm %icm. My age in Hexadeximal is %x, %% and in CAPITAL is %X\n", "", "Ro", 28, 168, 28, 28);
 	return (0);
 }
