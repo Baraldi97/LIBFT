@@ -6,7 +6,7 @@
 /*   By: rcosta <rcosta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 11:47:08 by rcosta            #+#    #+#             */
-/*   Updated: 2025/10/06 12:18:50 by rcosta           ###   ########.fr       */
+/*   Updated: 2025/10/06 15:18:30 by rcosta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_printf(const char *format, ...)
 	count = 0;
 	while (*format != '\0')
 	{
-		if (*format == '%')
+		if (*format == '%' && *(format + 1) != '\0')
 		{
 			format++;
 			count += print_format(*format, args);
