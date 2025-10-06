@@ -1,15 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rcosta <rcosta@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/06 12:52:30 by rcosta            #+#    #+#             */
+/*   Updated: 2025/10/06 12:53:13 by rcosta           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-#include <stdarg.h>
-#include <unistd.h>
-#include <stdlib.h>
+# include <stdarg.h>
+# include <unistd.h>
+# include <stdlib.h>
 
-int ft_printf(const char *format, ...);
-int print_format(char type, va_list args);
-int print_char(int c);
-int print_str(char *s);
-int print_digit(long n, int base, char *base_chars);
-int print_ptr(unsigned long n, char *base_chars);
+int	ft_printf(const char *format, ...);
+int	print_format(char type, va_list args);
+int	print_char(int c);
+int	print_str(char *s);
+int	print_digit(long n, int base, char *base_chars);
+int	print_ptr(unsigned long n, char *base_chars);
 
 #endif
