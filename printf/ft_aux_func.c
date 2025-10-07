@@ -6,7 +6,7 @@
 /*   By: rcosta <rcosta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 12:44:09 by rcosta            #+#    #+#             */
-/*   Updated: 2025/10/06 12:51:52 by rcosta           ###   ########.fr       */
+/*   Updated: 2025/10/07 10:20:40 by rcosta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int	print_digit(long n, int base, char *base_chars)
 {
 	int				count;
 	unsigned long	un;
+	char			buf[32];
+	int				i;
 
 	count = 0;
 	if (n < 0 && base == 10)
@@ -42,11 +44,16 @@ int	print_digit(long n, int base, char *base_chars)
 		n = -n;
 	}
 	un = n;
-	if (un >= (unsigned int)base)
+	i = 0;
+	if (un == 0)
+		buf[i++] = base_chars[0];
+	while (un > 0)
 	{
-		count += print_digit(un / base, base, base_chars);
+		buf[i++] = base_chars[un % base];
+		un /= base;
 	}
-	count += print_char(base_chars[un % base]);
+	while (i-- > 0)
+		count += print_char(buf[i]);
 	return (count);
 }
 
@@ -56,9 +63,7 @@ int	print_ptr(unsigned long n, char *base_chars)
 
 	count = 0;
 	if (!n)
-	{
 		return (write(1, "(nil)", 5));
-	}
 	count += write(1, "0x", 2);
 	count += print_digit(n, 16, base_chars);
 	return (count);
