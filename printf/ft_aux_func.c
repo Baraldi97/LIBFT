@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_aux_func.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcosta <rcosta@student.42.fr>              +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 12:44:09 by rcosta            #+#    #+#             */
-/*   Updated: 2025/10/07 10:20:40 by rcosta           ###   ########.fr       */
+/*   Updated: 2025/10/11 17:56:14 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,29 +32,21 @@ int	print_str(char *s)
 
 int	print_digit(long n, int base, char *base_chars)
 {
-	int				count;
-	unsigned long	un;
-	char			buf[32];
-	int				i;
+    int				count;
+    unsigned long	un;
 
-	count = 0;
-	if (n < 0 && base == 10)
-	{
-		count += print_char('-');
-		n = -n;
-	}
-	un = n;
-	i = 0;
-	if (un == 0)
-		buf[i++] = base_chars[0];
-	while (un > 0)
-	{
-		buf[i++] = base_chars[un % base];
-		un /= base;
-	}
-	while (i-- > 0)
-		count += print_char(buf[i]);
-	return (count);
+    count = 0;
+    if (n < 0 && base == 10)
+    {
+        count += print_char('-');
+        un = (unsigned long)(-n);
+    }
+    else
+        un = (unsigned long)n;
+    if (un >= (unsigned long)base)
+        count += print_digit(un / base, base, base_chars);
+    count += print_char(base_chars[un % base]);
+    return (count);
 }
 
 int	print_ptr(unsigned long n, char *base_chars)
