@@ -40,13 +40,3 @@ int	ft_printf(const char *format, ...)
 	va_end(args);
 	return (count);
 }
-
-int	main(void)
-{
-	int	x;
-
-	x = 42;
-	ft_printf("%p My name is %s, I'm %d years old, I'm %icm. My age in Hexadeximal is %x, %% and in CAPITAL is %X\n", &x, "Ro", 28, 168, 28, 28);
-	printf("%p My name is %s, I'm %d years old, I'm %icm. My age in Hexadeximal is %x, %% and in CAPITAL is %X\n", &x, "Ro", 28, 168, 28, 28);
-	return (0);
-}
