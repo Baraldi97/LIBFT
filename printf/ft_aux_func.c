@@ -32,21 +32,21 @@ int	print_str(char *s)
 
 int	print_digit(long n, int base, char *base_chars)
 {
-    int				count;
-    unsigned long	un;
+	int				count;
+	unsigned long	un;
 
-    count = 0;
-    if (n < 0 && base == 10)
-    {
-        count += print_char('-');
-        un = (unsigned long)(-n);
-    }
-    else
-        un = (unsigned long)n;
-    if (un >= (unsigned long)base)
-        count += print_digit(un / base, base, base_chars);
-    count += print_char(base_chars[un % base]);
-    return (count);
+	count = 0;
+	if (n < 0 && base == 10)
+	{
+		count += print_char('-');
+		un = (unsigned long)(-n);
+	}
+	else
+		un = (unsigned long)n;
+	if (un >= (unsigned long)base)
+		count += print_digit(un / base, base, base_chars);
+	count += print_char(base_chars[un % base]);
+	return (count);
 }
 
 int	print_ptr(unsigned long n, char *base_chars)
