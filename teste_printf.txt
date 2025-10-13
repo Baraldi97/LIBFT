@@ -1,0 +1,89 @@
+#define GREEN "\033[32m"
+#define RED "\033[31m"
+#define YELLOW "\033[33m"
+#define CYAN "\033[36m"
+#define RESET "\033[0m"
+
+void	check_result(int ft_ret, int std_ret)
+{
+	if (ft_ret == std_ret)
+		printf(GREEN "OK ✅ (retorno = %d)\n\n" RESET, ft_ret);
+	else
+		printf(RED "ERRO ❌ ft_printf = %d | printf = %d\n\n" RESET, ft_ret, std_ret);
+}
+
+int	main(void)
+{
+	int	count1;
+	int	count2;
+	int	num = 42;
+	char *str = "Hello 42";
+	void *ptr = &num;
+
+	printf(CYAN "\n========= TESTES ft_printf =========\n\n" RESET);
+
+	printf(YELLOW "Teste %%c\n" RESET);
+	count1 = ft_printf("ft_printf: [%c]\n", 'A');
+	count2 = printf("printf   : [%c]\n", 'A');
+	check_result(count1, count2);
+
+	printf(YELLOW "Teste %%s\n" RESET);
+	count1 = ft_printf("ft_printf: [%s]\n", str);
+	count2 = printf("printf   : [%s]\n", str);
+	check_result(count1, count2);
+
+	printf(YELLOW "Teste %%s com NULL\n" RESET);
+	count1 = ft_printf("ft_printf: [%s]\n", NULL);
+	count2 = printf("printf   : [%s]\n", "(null)");
+	check_result(count1, count2);
+
+	printf(YELLOW "Teste %%d positivo\n" RESET);
+	count1 = ft_printf("ft_printf: [%d]\n", 12345);
+	count2 = printf("printf   : [%d]\n", 12345);
+	check_result(count1, count2);
+
+	printf(YELLOW "Teste %%d negativo\n" RESET);
+	count1 = ft_printf("ft_printf: [%d]\n", -9876);
+	count2 = printf("printf   : [%d]\n", -9876);
+	check_result(count1, count2);
+
+	printf(YELLOW "Teste %%u\n" RESET);
+	count1 = ft_printf("ft_printf: [%u]\n", 4294967295u);
+	count2 = printf("printf   : [%u]\n", 4294967295u);
+	check_result(count1, count2);
+
+	printf(YELLOW "Teste %%x\n" RESET);
+	count1 = ft_printf("ft_printf: [%x]\n", 305441741);
+	count2 = printf("printf   : [%x]\n", 305441741);
+	check_result(count1, count2);
+
+	printf(YELLOW "Teste %%X\n" RESET);
+	count1 = ft_printf("ft_printf: [%X]\n", 305441741);
+	count2 = printf("printf   : [%X]\n", 305441741);
+	check_result(count1, count2);
+
+	printf(YELLOW "Teste %%p (ponteiro válido)\n" RESET);
+	count1 = ft_printf("ft_printf: [%p]\n", ptr);
+	count2 = printf("printf   : [%p]\n", ptr);
+	check_result(count1, count2);
+
+	printf(YELLOW "Teste %%p com NULL\n" RESET);
+	count1 = ft_printf("ft_printf: [%p]\n", NULL);
+	count2 = printf("printf   : [%p]\n", NULL);
+	check_result(count1, count2);
+
+	printf(YELLOW "Teste literal %%\n" RESET);
+	count1 = ft_printf("ft_printf: [%%]\n");
+	count2 = printf("printf   : [%%]\n");
+	check_result(count1, count2);
+
+	printf(YELLOW "Teste combinado\n" RESET);
+	count1 = ft_printf("ft_printf: Char[%c], Str[%s], Num[%d], Hex[%x], Ptr[%p], %%\n",
+		'Z', "MixTest", -123, 255, ptr);
+	count2 = printf("printf   : Char[%c], Str[%s], Num[%d], Hex[%x], Ptr[%p], %%\n",
+		'Z', "MixTest", -123, 255, ptr);
+	check_result(count1, count2);
+
+	printf(CYAN "====================================\n\n" RESET);
+	return (0);
+}
