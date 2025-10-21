@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 16:21:32 by rcosta            #+#    #+#             */
-/*   Updated: 2025/10/20 19:31:05 by marvin           ###   ########.fr       */
+/*   Updated: 2025/10/20 23:10:19 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ size_t	ft_strlen(char *s)
 		i++;
 	return (i);
 }
+
 char	*ft_strdup(char *s1)
 {
 	char			*dest;
@@ -62,11 +63,16 @@ char	*ft_substr(char *s, unsigned int start, size_t len)
 	str[i] = 0;
 	return (str);
 }
-void	fill_str(char *res, char *s1, char *s2)
+
+char	*ft_strjoin(char *s1, char *s2)
 {
+	char			*res;
 	unsigned int	i;
 	unsigned int	j;
 
+	res = (char *)malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
+	if (!res)
+		return (NULL);
 	i = 0;
 	j = 0;
 	while (s1[j])
@@ -75,15 +81,6 @@ void	fill_str(char *res, char *s1, char *s2)
 	while (s2[j])
 		res[i++] = s2[j++];
 	res[i] = '\0';
-}
-char	*ft_strjoin(char *s1, char *s2)
-{
-	char			*res;
-
-	res = (char *) malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
-	if (!res)
-		return (NULL);
-	fill_str(res, s1, s2);
 	return (res);
 }
 
@@ -100,6 +97,5 @@ char	*ft_strchr(const char *s, int c)
 	}
 	if (find == '\0')
 		return ((char *)s);
-
 	return (NULL);
 }
