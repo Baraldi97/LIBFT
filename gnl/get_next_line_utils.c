@@ -3,14 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rcosta <rcosta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 16:21:32 by rcosta            #+#    #+#             */
-/*   Updated: 2025/10/20 23:10:19 by marvin           ###   ########.fr       */
+/*   Updated: 2025/10/26 18:22:46 by rcosta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+#include <stdlib.h>
+#include <string.h>
 
 size_t	ft_strlen(char *s)
 {
