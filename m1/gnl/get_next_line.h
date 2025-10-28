@@ -1,20 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcosta <rcosta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/06 15:02:00 by rcosta            #+#    #+#             */
-/*   Updated: 2025/08/21 15:55:15 by rcosta           ###   ########.fr       */
+/*   Created: 2025/10/13 16:21:35 by rcosta            #+#    #+#             */
+/*   Updated: 2025/10/28 15:40:42 by rcosta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-int	ft_toupper(int c)
-{
-	if (c >= 'a' && c <= 'z')
-		return (c - 32);
-	return (c);
-}
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
+
+# include <stdlib.h>
+# include <unistd.h>
+
+char	*get_next_line(int fd);
+char	*ft_strdup(char *s1);
+char	*ft_substr(char *s, unsigned int start, size_t len);
+char	*ft_strjoin(char *s1, char *s2);
+char	*ft_strchr(const char *s, int c);
+
+size_t	ft_strlen(char *s);
+
+#endif
