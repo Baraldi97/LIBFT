@@ -1,0 +1,7 @@
+Linha 1 do arquivo
+Linha 2 do arquivo
+Linha 3 do arquivo
+
+
+cc -Wall -Wextra -Werror -D BUFFER_SIZE=42 get_next_line.c get_next_line_utils.c main.c -o gnl_test
+./gnl_test
